@@ -8,10 +8,10 @@
  * Controller of the vineIssuetrackerApp
  */
 angular.module('vineIssuetrackerApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['$scope','$http', '$q', '$routeParams', function($scope, $http, $q, $routeParams) {
+  	var defer = $q.defer();
+    $http.get("https://api.github.com/repos/npm/npm/issues"). success(function(data) {
+    	$scope.data = data;
+    	defer.resolve();
+    });
+  }]);

@@ -1,10 +1,41 @@
 <div class="row">
-  <div class="items" ng-repeat="item in data">
-    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 item">
-      Number - {{item.number}}
-      Title - {{item.title}}
-      Login - {{item.user.login}}
-      Message - {{item.body}}
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="form-group">
+      <input ng-model="query" class="form-control floating-label input-lg search" type="text" placeholder="Search for an issue...">
     </div>
   </div>
+</div>
+<div class="row">
+  <!-- <div class="wrapper">{{data.length}} Total Issues</div> -->
+  <div class="items" ng-repeat="item in data | filter: query">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="item">
+        <div class="id">
+          <div class="wrapper">Issue Number: {{item.number}}</div>
+        </div>
+        <div class="wrapper margin-top margin-bottom">
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+              <img class="profile_img" ng-src="{{item.user.avatar_url}}">
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding-left">
+              <div class="title">{{item.title}}</div>
+            </div>
+          </div>
+          <div class="username"><a ng-href="{{item.user.html_url}}">{{item.user.login}}</a></div>
+          <div class="desc">{{item.body | limitTo: 140}}</div>
+          <div class="margin-top tags" ng-repeat="label in item.labels">
+            <a ng-style="{'color': '#'+label.color, 'border': '1px solid #'+label.color}" ng-href="{{label.url}}">{{label.name}}</a>
+          </div>
+          <a ng-href="/issue/{{item.number}}" class="viewfull">View Full</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <pagination 
+      ng-model="currentPage"
+      total-items="data.length"
+      max-size="maxSize"  
+      boundary-links="true">
+  </pagination> -->
 </div>

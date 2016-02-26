@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3">
     <div class="form-group">
       <input ng-model="query" class="form-control floating-label input-lg search" type="text" placeholder="Search for an issue...">
     </div>
@@ -7,35 +7,39 @@
 </div>
 <div class="row">
   <!-- <div class="wrapper">{{data.length}} Total Issues</div> -->
-  <div class="items" ng-repeat="item in data | filter: query">
+  <div class="items" ng-repeat="item in data | filter: query | pagination: curPage * pageSize | limitTo: pageSize">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
       <div class="item">
-        <div class="id">
+        <div class="id" ng-class="">
           <div class="wrapper">Issue Number: {{item.number}}</div>
         </div>
         <div class="wrapper margin-top margin-bottom">
           <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               <img class="profile_img" ng-src="{{item.user.avatar_url}}">
             </div>
-            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding-left">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 no-padding-left">
               <div class="title">{{item.title}}</div>
             </div>
           </div>
           <div class="username"><a ng-href="{{item.user.html_url}}">{{item.user.login}}</a></div>
-          <div class="desc">{{item.body | limitTo: 140}}</div>
-          <div class="margin-top tags" ng-repeat="label in item.labels">
+          <div class="desc">{{item.body | limitTo: 137}} ...</div>
+          <div class="margin-top tags" ng-repeat="label in item.labels | limitTo: 3">
             <a ng-style="{'color': '#'+label.color, 'border': '1px solid #'+label.color}" ng-href="{{label.url}}">{{label.name}}</a>
           </div>
-          <a ng-href="/issue/{{item.number}}" class="viewfull">View Full</a>
+          <a ng-href="/issue/{{item.number}}" class="viewfull">View Full Issue</a>
         </div>
       </div>
     </div>
   </div>
-  <!-- <pagination 
-      ng-model="currentPage"
-      total-items="data.length"
-      max-size="maxSize"  
-      boundary-links="true">
-  </pagination> -->
+</div>
+<!-- I tried forever to center this -->
+<div class="row pagination" ng-show="data.length">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3 col-lg-6 col-lg-push-4">
+    <button type="button" class="pagebtn" ng-disabled="curPage == 0" ng-click="curPage=curPage-1" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;"> &lt; PREV</button>
+  <div class="page">Page {{curPage + 1}} of {{ numberOfPages() }}</div>
+  <button type="button" class="pagebtn"
+ ng-disabled="curPage >= data.length/pageSize - 1"
+ ng-click="curPage = curPage+1" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;">NEXT &gt;</button>
+  </div>
 </div>

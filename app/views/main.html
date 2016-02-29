@@ -7,7 +7,7 @@
 </div>
 <div class="row">
   <!-- <div class="wrapper">{{data.length}} Total Issues</div> -->
-  <div class="items" ng-repeat="item in data | filter: query | pagination: curPage * pageSize | limitTo: pageSize">
+  <div class="items" ng-repeat="item in (filteredata = (data | filter: query | pagination: curPage * pageSize) | limitTo: pageSize)">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
       <div class="item">
         <div class="id" ng-class="">
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="username"><a ng-href="{{item.user.html_url}}">{{item.user.login}}</a></div>
-          <div class="desc">{{item.body | limitTo: 137}} ...</div>
+          <div class="desc">{{item.body | limitToChars: 140}} ...</div>
           <div class="margin-top tags" ng-repeat="label in item.labels | limitTo: 3">
             <a ng-style="{'color': '#'+label.color, 'border': '1px solid #'+label.color}" ng-href="{{label.url}}">{{label.name}}</a>
           </div>
@@ -35,11 +35,13 @@
 </div>
 <!-- I tried forever to center this -->
 <div class="row pagination" ng-show="data.length">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3 col-lg-6 col-lg-push-4">
-    <button type="button" class="pagebtn" ng-disabled="curPage == 0" ng-click="curPage=curPage-1" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;"> &lt; PREV</button>
-  <div class="page">Page {{curPage + 1}} of {{ numberOfPages() }}</div>
-  <button type="button" class="pagebtn"
- ng-disabled="curPage >= data.length/pageSize - 1"
- ng-click="curPage = curPage+1" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;">NEXT &gt;</button>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3">
+    <div class="pagebtns">
+      <button type="button" class="pagebtn" ng-disabled="curPage == 0" ng-click="curPage=curPage-1" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;"> &lt; PREV</button>
+      <div class="pagenum">Page {{curPage + 1}} of {{ numberOfPages() }}</div>
+      <button type="button" class="pagebtn"
+        ng-disabled="curPage+1 >= numberOfPages()"
+        ng-click="curPage = curPage+1" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;">NEXT &gt;</button>
+    </div>
   </div>
 </div>

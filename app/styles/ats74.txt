@@ -1,0 +1,110 @@
+ats74
+
+1. The Full Collection (10 pts)
+Your website must allow the user to view the entire collection of entries in your catalog at once, and your collection (in your data.txt​ file) should contain at least five (5) complete entries.
+
+* Grade * -> 10/10 Yea.
+
+2. An Add Entry Form (15 pts)
+
+Use an HTML form that allows users to add an entry into your data file. An entry must have at least four (4) data fields associated with it.
+
+Note​: If you want to include images for each entry, you do not need to support image uploads (that’s a topic for
+can ask the user to type a valid image URL into a text field. Remember, a source credit must display near each image unless you created the image yourself in which case the credit can be in an HTML comment.
+
+* Grade * -> 12/15 was able to submit with \n\n\n\n\n\n\n\n\n\OKOKOK\n\n\n\n\n\n
+
+3. A Search Form (15 pts)
+
+Use another HTML form that allows users to search for specific entries in your collection. Your search functionality does not need to have complicated natural language processing, but it must allow for each of two types of searches:
+
+1. Filter Entries by a Single Field
+
+Example: Search for All Movies where Rating == PG
+
+2. Filter Entries by Multiple Fields
+
+If your search makes more sense as an or search, you may do that. Explain your choice of “and” vs “or” in your rationale.
+
+Your filtered results will probably display in a similar manner as the full collection. Make sure it is clear to your viewers when they are viewing the full collection and when they are viewing the results of a search.
+
+* Grade * -> 15/15 Good
+
+4. Form Checking and Data Validation (15 pts)
+
+Your code should contain a reasonable amount of input checking. We will test your input checking rigorously.
+
+● Should duplicate entries be allowed?
+● Should special characters be allowed as input for a name?
+● What is the maximum length of a field? Would you accept 1000 characters for a name?
+
+* Grade * -> 15/15 Nice.
+
+5. Rationale (10 pts)
+
+Describe your strategy for data validation and form checking in a PDF file (rationale.pdf)​and upload it to CMS​. Your
+
+rationale.pdf​ file should contain the following:
+
+● A description of how you check user input and how you determine which data is valid
+● A justification of why you allow some types of data and not others
+○ What type of data did you check for in each field/category/filter and why?
+■ Do you allow special characters ($, # , !) for entry names? Why?
+■ Do you allow alphabetic characters in your date fields? Why?
+■ Do you allow duplicate entries? Why?
+● An example of a search over multiple categories​that can be performed using the search form on your
+ website
+○ An example of an existing entry that would result from your example query
+○ An example of an existing entry that would not ​result from your example query
+● When searching multiple fields, is it an “or” search, an “and” search or do you offer a choice? Why did you do
+it this way?
+● Any other design decisions, additional functionality, or notes you want us to know about
+
+* Grade * -> 10/10 yup.
+
+6. A Persistent Data File (10 pts)
+
+The data file (data.txt​) on the server should always reflect the current state of your collection. If a user successfully submits a valid Add Entry form, then that new entry should appear in your data file even after the user closes and opens the browser again. The only exception to this is if the entry is a duplicate and you have explained why duplicates aren’t allowed in your collection. You should also fill this file with the first five (5) complete entries in your collection before submission.
+
+* Grade * -> 10/10 yea.
+
+7. Appropriate Website Design (10 pts)
+
+The design of the site should appropriately match the theme of your catalog site. The site should have a consistent
+
+look and feel, with clear, easy-to-follow navigation. If you display results on multiple different pages, you should be
+
+able to travel back to the previous page using navigation links or breadcrumbs, instead of relying on the browser’s
+
+back button. Your menu should be consistent on every page and indicate in some way what page is currently being viewed.
+
+Note:​For this project, the use of frameworks will not be allowed (see syllabus), but it is fine to use a preprocessor for
+
+your CSS as long as the output is legible to the grading TA.
+
+* Grade * -> 8/10 Not stellar, dont see a theme here with Avalon.
+
+8. Good Practices (10 pts)
+
+All code should be easy to read and understand by anyone. Make use of comments to explain things that aren’t obvious, and name your functions and variables appropriately. Your code should be indented properly so that it’s easy to see which lines belong to each element (HTML/CSS) or function (PHP/JavaScript). It’s also good practice to put all your CSS into external CSS files. Avoid using inline or embedded CSS unless you need to generate styles dynamically through PHP or JavaScript.
+
+Remember, a source credit must display near each image unless you created the image yourself in which case the credit can be in an HTML comment.
+
+When you upload your files to the server, keep them organized in appropriately named directories. CSS files should go into a css​ folder, image assets in an assets​folder, and JavaScript files in a scripts​folder. These subfolders and your HTML/PHP pages should go into the project folder p2​.
+
+Double check to make sure all your HTML output validates, which you can check at http://validator.w3.org/. Also test your add and search forms extensively, so you don’t get PHP errors when you submit them. Check your site in
+
+Chrome, Firefox and Safari. We may use any one of those for viewing your site.
+
+* Grade * -> 10/10 Looks great. Awesome.
+
+9. WOW Points (5 pts)
+
+Cool.
+
+* Grade * -> 5/5
+_____________________________________________________________________________
+
+FINAL GRADE 97/100
+- Brandon Giraldo, bjg226
+

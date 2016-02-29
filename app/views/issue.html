@@ -11,13 +11,13 @@
 		        		<div class="state">Status: {{data.state}}</div>
 		        	</div>
 		      	</div>
-		      	<div class="row margin-top">
+		      	<div class="row margin-top-2x">
 		      		<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
 		              <img class="profile_img img-responsive" ng-src="{{data.user.avatar_url}}">
 		            </div>
 		            <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
 		            	<div class="title">{{data.title}}</div>
-		            	<div class="margin-top tags" ng-repeat="label in data.labels">
+		            	<div class="tags" ng-repeat="label in data.labels">
 		            		<a ng-style="{'color': '#'+label.color, 'border': '1px solid #'+label.color}" ng-href="{{label.url}}">{{label.name}}</a>
 		          		</div>
 		          		<div class="username"><a ng-href="{{data.user.html_url}}">{{data.user.login}}</a></div>

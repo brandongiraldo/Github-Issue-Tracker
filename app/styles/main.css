@@ -44,6 +44,7 @@ body {
 
 .center {
   margin: auto;
+  text-align: center;
 }
 
 .dontshow {
@@ -64,7 +65,8 @@ body {
   background: url(../assets/home_background.png);
   position: relative;
 }
-.header .title {
+
+.header .wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -73,6 +75,17 @@ body {
   color: white;
   text-align: center;
   font-weight: 600;
+}
+
+.header .wrapper .title {
+  font-size: 38px;
+  margin: auto;
+  display: block;
+  padding-top: 30px;
+}
+
+.header .wrapper img {
+  max-height: 80px;
 }
 
 /*** Home page results ***/
@@ -328,16 +341,20 @@ body {
   margin: auto;
 }
 
-.specific_item a {
+.specific_item .username {
+  padding-top: 5px;
   display: block;
   margin: auto;
   text-align: center;
 }
+
 .specific_item .name {
   float: left;
   display: block;
 }
 
-.specific_item .comment {
+.specific_item .text_comment {
   float: left;
+  word-wrap: break-word;
+  width: 100%;
 }

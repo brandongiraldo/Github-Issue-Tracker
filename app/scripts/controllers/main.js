@@ -12,7 +12,7 @@
  * overview of issues from the GitHub API. 
  */
 angular.module('vineIssuetrackerApp')
-  .controller('MainCtrl', ['$scope','$http', '$q', '$routeParams', function($scope, $http, $q, $routeParams) {
+  .controller('MainCtrl', ['$scope','$http', '$q', function($scope, $http, $q) {
   	/**
       $scope.data when our request is complete
       defer is for angular's 'promises' library
@@ -55,6 +55,11 @@ angular.module('vineIssuetrackerApp')
             $scope.results = $scope.filteredata.length;
           }
           $scope.numberOfPages();
+        } else {
+          // Edge case where user highlights text and deletes at
+          // once.
+          $scope.curPage = 0;
+          $scope.results = $scope.filteredata.length;
         }
       });
     });
@@ -73,7 +78,7 @@ angular.module('vineIssuetrackerApp').filter('pagination', function(){
   };
 });
 
-angular.module('vineIssuetrackerApp').filter('limitToChars', function() {
+angular.module('vineIssuetrackerApp').filter('limitChars', function() {
   return function(input, limit) {
     // console.log("Char count - " + input.length + " Input - " + input.split(" "));
     var currentWordCount = 0;

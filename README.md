@@ -21,7 +21,7 @@ If you wish to configure the port, Gruntfile.js contains server information.
 
 ## Hosting
 
-I am currently hosting this application as a subdirectory application on my nginx server.
+I am currently hosting this application as a subdirectory application on my nginx server. I am using [pm2](https://github.com/Unitech/pm2).
 
 Its worth noting (since it look me about an hour and half to figure out) that the application `<base href='/'>` will change based on how you choose to route this in your site.conf.
 

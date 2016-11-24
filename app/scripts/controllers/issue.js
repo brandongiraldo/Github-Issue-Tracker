@@ -2,18 +2,18 @@
 
 /**
  * @ngdoc function
- * @name vineIssuetrackerApp.controller:MainCtrl
+ * @name npmIssueTrackerApp.controller:MainCtrl
  * @author Brandon Joel Giraldo 
  * @description
  * # MainCtrl
  *
- * Controller of the vineIssuetrackerApp
+ * Controller of the npmIssueTrackerApp
  * This controller handles specific issues
  * it will hit the GitHub API and 
  * parse the data to return the specific result.
  *
  */
-angular.module('vineIssuetrackerApp')
+angular.module('npmIssueTrackerApp')
   .controller('IssueCtrl', ['$scope','$http', '$q', '$routeParams', '$filter', '$location', function($scope, $http, $q, $routeParams, $filter, $location) {
     /**
       $scope.data when our request is complete
@@ -36,6 +36,7 @@ angular.module('vineIssuetrackerApp')
     // Promise callback when data is finished processing
     defer.promise.then(function() {
       // Self executing function to create URLs out of names.
+      // This is kinda a jank solution.
       (function (){
         for (var i=0; i < $scope.commentdata.comments.length; i++) {
           var outputString = $scope.commentdata.comments[i].body.split(" ");

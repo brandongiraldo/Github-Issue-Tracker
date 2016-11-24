@@ -1,5 +1,7 @@
 # GitHub Issue Tracker
 
+![Alt text](/app/assets/screen_shot.png?raw=true)
+
 This project was created as to demonstrate basic AngularJS features and capabilites. This application serves as an Issue tracker for GitHub. It will hit GitHub's REST API and show/browse information given by their REST API.
 
 The main URL is [https://api.github.com/repos/npm/npm/issues](https://api.github.com/repos/npm/npm/issues)

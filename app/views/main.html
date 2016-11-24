@@ -27,7 +27,7 @@
           <div class="margin-top tags" ng-repeat="label in item.labels | limitTo: 3">
             <a ng-style="{'color': '#'+label.color, 'border': '1px solid #'+label.color}" ng-href="{{label.url}}">{{label.name}}</a>
           </div>
-          <a ng-href="/issue/{{item.number}}" class="viewfull">View Full Issue</a>
+          <a ng-href="issue/{{item.number}}" class="viewfull">View Full Issue</a>
         </div>
       </div>
     </div>

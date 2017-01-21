@@ -123,6 +123,7 @@ body {
   float: left;
   width: 100%;
   font-size: 16px;
+  word-wrap: break-word;
 }
 
 .item .username a {

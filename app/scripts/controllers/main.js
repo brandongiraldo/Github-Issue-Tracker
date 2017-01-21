@@ -27,8 +27,8 @@ angular.module('npmIssueTrackerApp')
     $scope.data = '';
     $scope.results = 0; 
 
-    $http.get("https://api.github.com/repos/npm/npm/issues").success(function(data) {
-    	$scope.data = data;
+    $http.get("https://api.github.com/repos/npm/npm/issues").then(function(data) {
+    	$scope.data = data.data;
       $scope.results = data.length;     
     	defer.resolve();
     });
@@ -94,7 +94,7 @@ angular.module('npmIssueTrackerApp').filter('limitChars', function() {
         return outputArray.join(" ");
       } else {
         // If we reached the end of the array
-        if(i == inputArray.length-1) {
+        if(i === inputArray.length-1) {
           return outputArray.join(" ");
           // Otherwise lets keep counting and storing
         } else {
@@ -103,5 +103,5 @@ angular.module('npmIssueTrackerApp').filter('limitChars', function() {
         }
       }
     }
-  }
+  };
 });

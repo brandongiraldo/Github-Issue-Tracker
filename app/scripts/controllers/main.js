@@ -17,7 +17,7 @@ angular.module('npmIssueTrackerApp')
       $scope.data when our request is complete
       defer is for angular's 'promises' library
       when our data is finished processing
-      curPage and pageSize is used for the padgination
+      curPage and pageSize is used for the pagination
       directive.
     **/
   	var defer = $q.defer();
@@ -25,22 +25,24 @@ angular.module('npmIssueTrackerApp')
     $scope.pageSize = 9;
     $scope.query = '';
     $scope.data = '';
-    $scope.results = 0; 
+    $scope.results = 0;
 
-    $http.get("https://api.github.com/repos/npm/npm/issues").then(function(data) {
-    	$scope.data = data.data;
-      $scope.results = data.length;     
+    // As of Angular 1.6.1, .success has been deprecated.
+    $http.get("https://api.github.com/repos/npm/npm/issues").then(function(response) {
+      console.log(response);
+    	$scope.data = response.data;
+      $scope.results = $scope.data.length;     
     	defer.resolve();
     });
 
     /**
-      After the data is finished procressing, just bind and event listener to setpage to
+      After the data is finished processing, just bind and event listener to set page to
       1 when searching for an item
     **/
     defer.promise.then(function() {
       /**
-        numberOfPages will calculated the number of pages remaning given the length
-        of the data and the pagesize (number of elements per page).
+        numberOfPages will calculated the number of pages remaining given the length
+        of the data and the page size (number of elements per page).
       **/
       $scope.numberOfPages = function() {
         return Math.ceil($scope.results / $scope.pageSize);
@@ -80,28 +82,16 @@ angular.module('npmIssueTrackerApp').filter('pagination', function(){
     return input.slice(start);
   };
 });
-
+/**
+  Custom limitChars filter, vastly improved from the previous version!
+**/
 angular.module('npmIssueTrackerApp').filter('limitChars', function() {
   return function(input, limit) {
-    var currentWordCount = 0;
-    var inputArray = input.split(" ");
-    var outputArray = [];
-    // For all input words
-    for(var i=0; i < inputArray.length; i++) {
-      // If out current count plus another would exceed the limit 
-      if(currentWordCount+inputArray[i].length > limit) {
-        // Return the final outputArray
-        return outputArray.join(" ");
-      } else {
-        // If we reached the end of the array
-        if(i === inputArray.length-1) {
-          return outputArray.join(" ");
-          // Otherwise lets keep counting and storing
-        } else {
-          outputArray.push(inputArray[i]); 
-          currentWordCount+=inputArray[i].length+1; // +1 for space
-        }
-      }
+    if(input.length > limit) {
+      input = input.slice(0, limit);
+      return input.slice(0, input.lastIndexOf(" "));
+    } else {
+      return input;
     }
   };
 });

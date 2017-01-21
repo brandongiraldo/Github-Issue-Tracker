@@ -36,7 +36,9 @@ angular.module('npmIssueTrackerApp')
     // Promise callback when data is finished processing
     defer.promise.then(function() {
       // Self executing function to create URLs out of names.
-      // This is kinda a jank solution.
+      // This is kinda a jank solution
+
+      // Its on the list of improvements to be made.
       (function (){
         for (var i=0; i < $scope.commentdata.comments.length; i++) {
           var outputString = $scope.commentdata.comments[i].body.split(" ");

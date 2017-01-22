@@ -19,7 +19,8 @@
  */
 angular
   .module('npmIssueTrackerApp', [
-    'ngRoute'
+    'ngRoute',
+    'btford.markdown'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

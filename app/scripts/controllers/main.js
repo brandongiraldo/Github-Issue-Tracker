@@ -42,7 +42,8 @@ angular.module('npmIssueTrackerApp')
     defer.promise.then(function() {
       /**
         numberOfPages will calculated the number of pages remaining given the length
-        of the data and the page size (number of elements per page).
+        of the data and the page size (number of elements per page). Data length can
+        change dynamically based on query results
       **/
       $scope.numberOfPages = function() {
         return Math.ceil($scope.results / $scope.pageSize);
@@ -53,6 +54,7 @@ angular.module('npmIssueTrackerApp')
       $scope.$watch("query", function() {
         if ($scope.query.length > 0) {
           $scope.curPage = 0;
+          // Defined in main.html:10
           if(!$scope.filteredata) {
             $scope.results = 0;
           } else {
